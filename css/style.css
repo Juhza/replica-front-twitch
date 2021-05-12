@@ -16,12 +16,43 @@ a, a:hover, a:active, a:focus, a:focus-visible, input, input:active, input:focus
     transition: 0.15s;
 }
 
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 0.3rem;
+}
+
+h3 {
+    margin: 0 0 0.5em 0;
+}
+
+h4 {
+    margin: 0;
+    font-size: 15px;
+}
+
+h3 a {
+    color: #9147ff;
+}
+
+h3 a:hover, h3 a:active, h3 a:focus-visible, h3 a:focus, h4 a:hover, h4 a:active, h4 a:focus-visible, h4 a:focus {
+    color: #772ce8;
+}
+
+p, ul {
+    margin: 0 0 1.5em 0;
+    font-size: 14px;
+}
+
 #wrapper {
     width: 100vw;
     height: 100vh;
 }
 
-#wrapper div {
+#wrapper > div {
     display: flex;
 }
 
@@ -39,9 +70,12 @@ a, a:hover, a:active, a:focus, a:focus-visible, input, input:active, input:focus
 .navigation .logo {
     height: 40px;
     width: 40px;
-    color: #9147ff;
     font-size: 14px;
     justify-content: center;
+}
+
+.navigation .logo a {
+    color: #9147ff;
 }
 
 .navigation .links a {
@@ -115,6 +149,27 @@ a, a:hover, a:active, a:focus, a:focus-visible, input, input:active, input:focus
     background-color: #772ce8;
 }
 
+.btn {
+    font-size: 13px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin: 0 5px;
+    background-color: #0000000D;
+}
+
+.btn:hover, .btn:active, .btn:focus-visible, .btn:focus {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.btn.purple {
+    background-color: #9147ff;
+    color: #f2f2f2;
+}
+
+.btn.purple:hover, .btn.purple:active, .btn.purple:focus-visible, .btn.purple:focus {
+    background-color: #772ce8;
+}
+
 .grey-btn {
     background-color: #0000000D;
 }
@@ -123,23 +178,134 @@ a, a:hover, a:active, a:focus, a:focus-visible, input, input:active, input:focus
     background-color: rgba(0, 0, 0, 0.12);
 }
 
-/* a.icon {
-    font-size: 18px !important;
-    border-radius: 5px;
+.sidebar {
+    width: 16vw;
+    margin-right: 8vw;
 }
 
-a.icon:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-} */
+.sidebar > div {
+    margin-bottom: 6vh;
+}
 
-.sidebar {
-    min-width: 25vw;
+.sidebar, .sidebar > div {
+    flex-direction: column;
+}
+
+.sidebar .btn {
+    margin: 0;
+}
+
+.main {
+    padding: 3rem 1.5rem;
 }
 
 .content {
-    padding: 1vw;
+    flex-grow: 1;
 }
 
-.content:last-child {
-    flex-grow: 1;
+.recommended-channels, .recommended-categories {
+    margin-bottom: 6vh;
+}
+
+.recommended-categories .categories {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 16% 16% 16% 16% 16% 16%;
+}
+
+.recommended-categories .categories .item .image, .recommended-channels .channels .item .image {
+    margin-bottom: 10px;
+}
+
+.recommended-categories .categories .item .image img, .recommended-channels .channels .item .image img {
+    max-width: 100%;
+}
+
+.recommended-categories .categories .item p {
+    margin-bottom: 0.8em;
+}
+
+.category-tags a, .stream-tags a {
+    padding: 3px 8px;
+    background-color: #0000000D;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 5px 5px 0;
+    display: inline-block;
+}
+
+.category-tags a:hover, .stream-tags a:hover {
+    background-color: rgba(0, 0, 0, 0.12);
+}
+
+.recommended-channels .channels {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 32% 32% 32%;
+}
+
+.footer-bar {
+    height: 15px;
+    background-color: #9147ff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+/* Efeito do hover na imagem da Twitch */
+/* Ref: https://codepen.io/Axiol/pen/QWLRMVr */
+
+.stream {
+    position: relative;
+    display: inline-block;
+    background-color: #9147ff;
+}
+
+.stream:before,
+.stream:after {
+    content: '';
+    display: block;
+    background-color: #9147ff;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    transition: all .15s ease;
+}
+
+.stream:before {
+    top: 0;
+    left: 0;
+    transform-origin: top left;
+    transform: rotate(-45deg) scale(0);
+}
+
+.stream:after {
+    right: 0;
+    bottom: 0;
+    transform-origin: bottom right;
+    transform: rotate(45deg) scale(0);
+}
+
+.stream__thumbnail {
+    display: block;
+    transform: translate(0, 0);
+    transition: all .15s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.stream:hover .stream__thumbnail {
+    transform: translate(6px, -6px);
+}
+
+.stream:hover:before {
+    transform: rotate(-45deg) scale(1);
+}
+
+.stream:hover:after {
+    transform: rotate(45deg) scale(1);
 }
